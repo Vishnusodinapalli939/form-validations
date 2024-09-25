@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <form id="form">
+        <label for="roll">Roll No</label>
+        <input type="text" id="roll"><br><br>
+        <span id="sp1" style="display:none">please fill this field</span>
+        <span id="sp2" style="display:none" >enter valid roll number </span>
+        <label for="username">User Name</label>
+        <input type="text" id="username"><br><br>
+        <span id="sp3" style="display:none">please fill this field</span>
+        <div id="sp4" style="display:none">enter valid username</div>
+        <label for="mob">mobile</label>
+        <input type="numbers" id="mob"><br><br>
+        <span id="sp5" style="display:none">please fill this field</span>
+        <span id="sp6" style="display:none" >enter valid mobile number and length should be 10 </span>
+        <label for="pswd">Password</label>
+        <input type="password" id="pswd"><br><br>
+        <span id="sp7" style="display:none">please fill this field</span>
+        <span id="sp8" style="display:none" >enter valid password and length atleast 8(having 1 UpperCase,1 Lower Case,1 special character) </span>
+        <input type="submit" id="submit">
+    </form>
+    <p></p>
+    <script>
+        let roll=document.getElementById("roll");
+        let uName=document.getElementById("username")
+        let mob=document.getElementById("mob");
+        let pswd=document.getElementById("pswd");
+        let form=document.getElementById("form");
+        let p=document.getElementsByTagName("p");
+        
+        form.addEventListener("submit",(e)=>{
+            e.preventDefault();
+            let rollPat=/^20kh1a0[0-9]/i
+        let b=roll.value;
+        let c=rollPat.test(b);
+        let userPat=/[a-z][A-Z]/i
+        let user=uName.value
+        let test2=userPat.test(user)
+        let mob1=/[0-9]{10}/
+        let mob2=mob.value;
+        let test3=mob1.test(mob2);
+        let pswd1=/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&]){8,}/;
+        let pswd2=pswd.value;
+        let test4=pswd1.test(pswd2);
+            if(roll.value == ""){
+                roll.style.border="2px solid red";
+                // let sp2=document.getElementById("sp2");
+                sp1.style.display="block"
+            }
+            else if(c==false){
+                roll.style.border="2px solid red";
+                sp2.style.display="block"
+            }
+            else if(uName.value==""){
+                uName.style.border="2px solid red";
+                sp3.style.display="block"
+            }
+            else if(test2==false){
+                uName.style.border="2px solid red";
+                 sp4.style.display="block"
+            }
+            else if(mob.value==""){
+                mob.style.border="2px solid red";
+                sp5.style.display="block"
+            }
+            else if(test3==false && mob.value.length<10){
+                mob.style.border="2px solid red";
+                sp6.style.display="block"
+            }
+            else if(pswd2==""){
+                pswd.style.border="2px solid red";
+                sp7.style.display="block";
+            }
+            else if(test4==false){
+                pswd.style.border="2px solid red";
+                sp8.style.display="block";
+            }
+            })
+      
+    </script>
+</body>
+</html>
